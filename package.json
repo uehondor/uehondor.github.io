@@ -1,0 +1,23 @@
+{
+  "name": "uyi.ehondor.com",
+  "version": "0.0.1",
+  "description": "Personal Website",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/uehondor/uehondor.github.io.git"
+  },
+  "author": "Uyi Ehondor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uehondor/uehondor.github.io/issues"
+  },
+  "homepage": "https://github.com/uehondor/uehondor.github.io",
+  "dependencies": {
+      "grunt": "0.4.5",
+      "bower": "1.3.3"
+  }
+}
