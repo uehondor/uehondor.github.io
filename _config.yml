@@ -9,4 +9,10 @@ url: "http://uyi.ehondor.com"
 markdown: kramdown
 permalink: pretty
 
-exclude: ['Guardfile','Gemfile.lock','Gemfile']
+# exclude: ['Guardfile','Gemfile.lock','Gemfile']
+exclude: []
+
+source:       ./app
+destination:  ./_site
+plugins:      ./app/_plugins
+layouts:      ./app/_layouts
