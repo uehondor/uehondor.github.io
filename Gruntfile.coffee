@@ -23,7 +23,7 @@ module.exports = (grunt) ->
         tasks: ['build']
       less:
         files: [
-          'less/*'
+          'app/less/*'
         ]
         tasks: ['build']
       config:
@@ -34,30 +34,22 @@ module.exports = (grunt) ->
       grunt:
         files: ['Gruntfile.coffee']
     copy:
-      # css:
-      #   expand: true
-      #   flatten: true
-      #   src: [
-      #     'bower_components/bootstrap/dist/css/*.min.css',
-      #     'bower_components/fontawesome/css/*.min.css'
-      #   ]
-      #   dest: 'app/css/'
       js:
         expand: true
         flatten: true
-        src: 'bower_components/bootstrap/dist/js/*.min.js'
+        src: 'vendor/bootstrap/dist/js/*.min.js'
         dest: 'app/js/'
-      # fonts:
-      #   expand: true
-      #   flatten: true
-      #   src: 'bower_components/fontawesome/fonts/*'
-      #   dest: 'app/fonts/'
+      fonts:
+        expand: true
+        flatten: true
+        src: 'vendor/fontawesome/fonts/*'
+        dest: 'app/fonts/'
     less:
       build:
         options:
           path: ['less']
         files:
-          'app/css/styles.css': 'less/styles.less'
+          'app/css/styles.css': 'app/less/styles.less'
     clean:
       build: ['app/css', 'app/fonts']
 
