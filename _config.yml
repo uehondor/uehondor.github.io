@@ -5,14 +5,26 @@ description: "Notes to self and techies alike."
 baseurl: ""
 url: "http://uyi.ehondor.com"
 
+# paths
+paths:
+  images: 'images'
+
 # Build settings
 markdown: kramdown
 permalink: pretty
 
-# exclude: ['Guardfile','Gemfile.lock','Gemfile']
-exclude: []
+exclude: [
+  'Gem*',
+  'Guardfile',
+  'Gruntfile',
+  'bower.json',
+  'package.json',
+  'node_modules',
+  'less',
+  'vendor'
+]
 
-source:       ./app
+source:       .
 destination:  ./_site
-plugins:      ./app/_plugins
-layouts:      ./app/_layouts
+plugins:      ./_plugins
+layouts:      ./_layouts

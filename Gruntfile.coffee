@@ -17,13 +17,13 @@ module.exports = (grunt) ->
         livereload: true
       html:
         files: [
-          'app/*.html'
-          'app/**/*.html'
+          '*.html'
+          '**/*.html'
         ]
         tasks: ['build']
       less:
         files: [
-          'app/less/*'
+          'less/*'
         ]
         tasks: ['build']
       config:
@@ -38,20 +38,32 @@ module.exports = (grunt) ->
         expand: true
         flatten: true
         src: 'vendor/bootstrap/dist/js/*.min.js'
-        dest: 'app/js/'
+        dest: 'js/'
       fonts:
         expand: true
         flatten: true
         src: 'vendor/fontawesome/fonts/*'
-        dest: 'app/fonts/'
+        dest: 'fonts/'
+    responsive_images:
+      create:
+        options:
+          sizes: [
+            name: 'small',
+            width: 127
+          ]
+        files: [
+          {
+            src: 'images/*.{jpg,gif,png}', dest: 'images/me.jpg'
+          }
+        ]
     less:
       build:
         options:
           path: ['less']
         files:
-          'app/css/styles.css': 'app/less/styles.less'
+          'css/styles.css': 'less/styles.less'
     clean:
-      build: ['app/css', 'app/fonts']
+      build: ['css', 'fonts', 'images/me-*.jpg']
 
   @loadNpmTasks 'grunt-contrib-watch'
   @loadNpmTasks 'grunt-contrib-connect'
@@ -59,8 +71,9 @@ module.exports = (grunt) ->
   @loadNpmTasks 'grunt-contrib-less'
   @loadNpmTasks 'grunt-contrib-clean'
   @loadNpmTasks 'grunt-jekyll'
+  @loadNpmTasks 'grunt-responsive-images'
 
   # Default task(s).
   @registerTask 'default', ['build', 'serve']
   @registerTask 'serve', ['connect:server', 'watch']
-  @registerTask 'build', ['clean', 'less:build', 'copy', 'jekyll:build']
+  @registerTask 'build', ['clean', 'less:build', 'copy', 'responsive_images:create', 'jekyll:build']

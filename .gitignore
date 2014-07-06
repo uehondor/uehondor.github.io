@@ -2,5 +2,5 @@ _site
 node_modules
 bower_components/
 vendor
-app/css
-app/fonts/fontawesome*
+css
+fonts/fontawesome*
