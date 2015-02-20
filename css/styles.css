@@ -435,7 +435,7 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 36px;
+  font-size: 42px;
 }
 h2,
 .h2 {
@@ -7341,12 +7341,11 @@ button.close {
   content: "\f1e2";
 }
 body {
-  padding-top: 70px;
+  padding-top: 20px;
 }
-.brand {
-  position: absolute;
-}
-nav .social-icons a {
-  padding-right: 5px;
-  padding-left: 5px;
+.o-center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
 }

@@ -49,11 +49,11 @@ module.exports = (grunt) ->
         options:
           sizes: [
             name: 'small',
-            width: 127
+            width: 130
           ]
         files: [
           {
-            src: 'images/*.{jpg,gif,png}', dest: 'images/me.jpg'
+            src: 'images/me.jpg', dest: 'images/me.jpg'
           }
         ]
     less:
