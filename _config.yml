@@ -1,18 +1,20 @@
 # Site settings
-title: Uyi Ehondor
-email: uyi@email.com
+title: U.E.Ehondor
+header-img: images/home-bg.jpg
+email: uyi@ehondor.com
 description: "Notes to self and techies alike."
 baseurl: ""
 url: "http://uyi.ehondor.com"
-
-# paths
-paths:
-  images: 'images'
+social_profiles:
+  twitter: cyberuyi
+  github: uehondor
+  linkedin: uyioghosaehondor
 
 # Build settings
 markdown: kramdown
+highlighter: pygments
 permalink: pretty
-
+paginate: 10
 exclude: [
   'Gem*',
   'Guardfile',
@@ -23,8 +25,6 @@ exclude: [
   'less',
   'vendor'
 ]
-
 source:       .
 destination:  ./_site
-plugins:      ./_plugins
 layouts:      ./_layouts
