@@ -13,18 +13,17 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+                {% for page in site.pages %}
                 <li>
-                    <a href="{{ site.baseurl }}/">Home</a>
+                    <a href="{{ page.url | prepend: site.baseurl }}">
+                        {% if page.linkTitle %}{{ page.linkTitle }}{% else %}{{ page.title }}{% endif %}
+                    </a>
                 </li>
-                {% for page in site.pages %}{% if page.title %}
-                <li>
-                    <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-                </li>
-                {% endif %}{% endfor %}
+                {% endfor %}
             </ul>
-        </div>
+        </div> -->
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
