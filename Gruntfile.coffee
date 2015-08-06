@@ -7,44 +7,42 @@ module.exports = (grunt) ->
         options:
           serve: false
           build: true
+      watch:
+        options:
+          serve: false
+          build: true
+          watch: true
     connect:
       server:
         options:
           base: '_site'
           open: true
+    clean:
+      build: ['css', 'fonts', 'images/me-*.jpg']
     watch:
       options:
         livereload: true
-      html:
-        files: [
-          '*.html'
-          '**/*.html'
-        ]
-        tasks: ['build']
       less:
         files: [
           'less/*'
         ]
-        tasks: ['build']
-      config:
-        files: [
-          '_config.yml'
-        ]
-        tasks: ['build']
-      grunt:
-        files: ['Gruntfile.coffee']
-    copy:
-      js:
-        expand: true
-        flatten: true
-        src: 'vendor/bootstrap/dist/js/*.min.js'
-        dest: 'js/'
-      fonts:
-        expand: true
-        flatten: true
-        src: 'vendor/fontawesome/fonts/*'
-        dest: 'fonts/'
-    responsive_images:
+        tasks: ['less']
+    less:
+      build:
+        options:
+          path: ['less']
+          cleancss: true
+        files:
+          'css/styles.css': 'less/styles.less'
+    cssmin:
+      options:
+        shorthandCompacting: false
+        roundingPrecision: -1
+      target:
+        files:
+          'css/styles.min.css': ['css/styles.css']
+
+    images:
       create:
         options:
           sizes: [
@@ -56,24 +54,16 @@ module.exports = (grunt) ->
             src: 'images/me.jpg', dest: 'images/me.jpg'
           }
         ]
-    less:
-      build:
-        options:
-          path: ['less']
-        files:
-          'css/styles.css': 'less/styles.less'
-    clean:
-      build: ['css', 'fonts', 'images/me-*.jpg']
 
   @loadNpmTasks 'grunt-contrib-watch'
   @loadNpmTasks 'grunt-contrib-connect'
-  @loadNpmTasks 'grunt-contrib-copy'
+  @loadNpmTasks 'grunt-contrib-cssmin'
   @loadNpmTasks 'grunt-contrib-less'
   @loadNpmTasks 'grunt-contrib-clean'
   @loadNpmTasks 'grunt-jekyll'
-  @loadNpmTasks 'grunt-responsive-images'
 
   # Default task(s).
-  @registerTask 'default', ['build', 'serve']
+  @registerTask 'default', ['develop']
+  @registerTask 'develop', ['clean', 'less', 'serve']
   @registerTask 'serve', ['connect:server', 'watch']
-  @registerTask 'build', ['clean', 'less:build', 'copy', 'responsive_images:create', 'jekyll:build']
+  @registerTask 'publish', ['clean', 'images', 'less', 'jekyll:build']
