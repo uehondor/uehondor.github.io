@@ -1,8 +1,9 @@
 # Site settings
+
 title: uyi.ehondor.com
 header-img: images/home-bg.jpg
 email: uyi@ehondor.com
-description: "Notes to self and techies alike."
+description: "Notes, journals, log, random texts about tech, life, parenting and so on."
 baseurl: ""
 url: "http://uyi.ehondor.com"
 social_profiles:
@@ -10,21 +11,60 @@ social_profiles:
   github: uehondor
   linkedin: uyioghosaehondor
 
-# Build settings
+# Where things are
+source: .
+destination: ./_site
+plugins_dir: _plugins
+layouts_dir: _layouts
+data_dir: _data
+includes_dir: _includes
+collections:
+  posts:
+    output: true
+
+# Handling Reading
+safe: false
+include: [".htaccess"]
+exclude: ["Gem*", "Guardfile", "Gruntfile", "bower.json", "package.json", "node_modules", "less", "vendor", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/", "wordpress_posts_backup/"]
+keep_files: [".git", ".svn"]
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+# Filtering Content
+show_drafts: null
+limit_posts: 0
+future: false
+unpublished: false
+
+# Plugins
+whitelists: []
+gems: ["jekyll-paginate-v2"]
+
+# Conversion
 markdown: kramdown
-highlighter: pygments
-permalink: pretty
-paginate: 10
-exclude: [
-  'Gem*',
-  'Guardfile',
-  'Gruntfile',
-  'bower.json',
-  'package.json',
-  'node_modules',
-  'less',
-  'vendor'
-]
-source:       .
-destination:  ./_site
-layouts:      ./_layouts
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+# Serving
+detach: false
+port: 4000
+host: 127.0.0.1
+baseurl: "" # does not include hostname
+show_dir_listing: false
+
+# Outputting
+permalink: date
+pagination:
+  enabled: true
+  sort_reverse: true
+  per_page: 5
+timezone: Europe/London
+
+quite: false
+verbose: false
+defaults: []
+
+liquid:
+  error_mode: warn
