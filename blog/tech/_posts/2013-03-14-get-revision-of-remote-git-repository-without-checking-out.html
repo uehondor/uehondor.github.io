@@ -1,0 +1,24 @@
+---
+layout: post
+published: true
+title: Get revision of remote git repository without checking out
+date: '2013-03-14 10:35:16 +0000'
+---
+
+<p>You can get the revision of a remote git repository by using the <a href="http://git-scm.com/docs/git-ls-remote" title="git ls-remote" target="_blank">git ls-remote</a> command</p>
+
+<p>This simple example will output the revision for all branches and tags.</p>
+
+{% highlight bash %}git ls-remote url-to-git-repo:username/repo.git{% endhighlight %}
+
+<p>Output will look something like this:</p>
+{% highlight bash %}
+8eef34582a...        HEAD
+4f4d5e18fd...        refs/heads/master
+84ae6b827a...        refs/heads/another-branch
+...
+{% endhighlight %}
+
+<p>You can narrow the output down to just one branch by doing the following</p>
+
+{% highlight bash %}git ls-remote url-to-git-repo:username/repo.git branch-name{% endhighlight %}

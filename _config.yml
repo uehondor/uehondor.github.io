@@ -64,7 +64,9 @@ timezone: Europe/London
 
 quite: false
 verbose: false
-defaults: []
+defaults:
+  author:
+    display_name: Uyi Ehondor
 
 liquid:
   error_mode: warn
