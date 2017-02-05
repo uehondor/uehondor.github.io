@@ -1,0 +1,22 @@
+---
+layout: post
+published: true
+title: Your VM has become "inaccessible"... Really?
+date: '2013-03-11 08:45:46 +0000'
+---
+<p>Earlier today I got this error</p>
+
+{% highlight bash %}
+Your VM has become "inaccessible."
+Unfortunately, this is a critical error with VirtualBox that Vagrant can not cleanly recover from.
+Please open VirtualBox and clear out your inaccessible virtual machines or find a way to fix them.
+{% endhighlight %}
+
+<p>I think this happened because I deleted the directory where virtual box store info. about the VM.
+Since virtual box could not access these VM metadata, vagrant could not also.</p>
+
+<p>Anyway, I resolved the issue by deleting the .vagrant file created by vagrant and did a</p>
+{% highlight bash %}vagrant up{% endhighlight %}
+
+<p>If you have multiple vagrant VMs running on the same machine,  you run he following scripts.</p>
+{% highlight bash %}find path/to/vagrant/vm -n ".vagrant" | xargs rm{% endhighlight %}

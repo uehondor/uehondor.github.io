@@ -1,0 +1,43 @@
+---
+layout: post
+title: Issue with install celery[redis]
+date: 2014-01-03 11:03:04 +0000
+tags:
+  - redis
+  - celery
+  - pip
+---
+<h2>Error output</h2>
+
+<p>For some reason installing celery with the redis bundle failed with the error below.</p>
+
+{% highlight bash%}
+Begin output of pip install  celery[redis]==3.1.3 ----
+STDOUT: Downloading/unpacking celery[redis]==3.1.3
+Cleaning up...
+Exception:
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/pip/basecommand.py", line 122, in main
+    status = self.run(options, args)
+  File "/usr/local/lib/python2.7/dist-packages/pip/commands/install.py", line 270, in run
+    requirement_set.prepare_files(finder, force_root_egg_info=self.bundle, bundle=self.bundle)
+  File "/usr/local/lib/python2.7/dist-packages/pip/req.py", line 1197, in prepare_files
+    for subreq in dist.requires(req_to_install.extras):
+  File "build/bdist.linux-x86_64/egg/pkg_resources.py", line 2497, in requires
+    "%s has no such extra feature %r" % (self, ext)
+UnknownExtra: celery 3.1.3 has no such extra feature 'redis'
+
+Storing debug log for failure in /root/.pip/pip.log
+STDERR:
+---- End output of pip install  celery[redis]==3.1.3 ----
+Ran pip install  celery[redis]==3.1.3 returned 2
+
+{% endhighlight %}
+
+<h2>Solution</h2>
+
+<p>The fix was to change the version number to the latest version, 3.1.7.</p>
+
+{% highlight bash %}
+$ pip install celery[redis]==3.1.7
+{% endhighlight %}

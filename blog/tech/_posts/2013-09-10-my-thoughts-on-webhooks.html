@@ -1,0 +1,25 @@
+---
+layout: post
+published: true
+title: My thoughts on Webhooks Part 1
+---
+<p>I've just come across this relatively "new" web concept. When I say new concept, I actually mean a  new way of using existing web technology.</p>
+
+<h2>What is Webhooks?</h2>
+<p>Webhooks "<em>...is a method of augmenting or altering the behavior of a web page, or web application, with custom callbacks...</em>". This basically means actions on a web app. can be configured to invoke an event or behaviour on another.</p>
+<p>The idea behind Webhooks is sort of similar to the <code>PublishSubscribe</code> Java Mail pattern I played with some years ago, but for the web.</p>
+
+<h2>How does it work?</h2>
+<p>Essentially, a web app registers a custom http callback (a URL to the callback handler) on a another web app. for a certain event. The callback is triggered before, during or after the event of interest is fired on the host web app.</p>
+<p>This is especially useful when consuming API services.</p>
+<p>For example, if I make an API request to send out 10,000 emails, I obviously can't wait around for all emails to be sent before moving on. With the Webhooks concept, I can register a custom http callback, which means I get notified when the job is done.</p>
+
+<h2>Websites using the Webhooks?</h2>
+<p>Google, Facebook, Github, Webscript.io and many more.</p>
+
+<h3>Sources</h3>
+<ul>
+    <li><a href="http://progrium.com/blog/2012/11/19/from-webhooks-to-the-evented-web/">From Webhooks to the Evented Web</a></li>
+    <li><a href="http://progrium.com/blog/2007/05/03/web-hooks-to-revolutionize-the-web/">Web hooks to revolutionize the web</a></li>
+    <li><a href="http://en.m.wikipedia.org/wiki/Webhook">Webhook</a></li>
+</ul>

@@ -1,0 +1,55 @@
+---
+layout: post
+published: true
+title: A Simple PHP Testrunner using PHPUnit
+author:
+  display_name: Uyi Ehondor
+date: '2013-09-09 13:55:56 +0100'
+---
+<p>I've been wanting to develop a node.js module for a while. I finally got round to doing so last weekend.</p>
+
+<h2>What is phpunit-testrunner?</h2>
+<p><a href="http://github.com/uehondor/phpunit-testrunner" title="phpunit-testrunner">phpunit-testrunner</a> is a very simple automatic testrunner, inspired by <a href="http://karma-runner.github.io" title="karma">karma</a> another testrunner for javascript. It was designed to automatically run your phpunit test suite when you modify a file, making it very handy to see the effect of a file change on the rest of your codebase.</p>
+
+<h2>Why is it important?</h2>
+<p>Test-Driven Development (TDD) teaches us to write tests first. Every step in the test-implement cycle, includes a continuous 'run test' step.</p>
+<p>The <code>phpunit-testrunner</code> removes the need to run your test suite every time you modify a file (or add a new file). This makes development that one step easier. With realtime updates, you should immediately see the effects of any change made.</p>
+
+<h2>How does it work?</h2>
+<p>It works by watching a bunch of files (or directories). When any of those files are modified (or a new file is added to the directory being watched), <code>phpunit-testrunner</code> will automatically execute phpunit using the command options your provide.</p>
+
+<h2>Installation</h2>
+<p>
+{% highlight bash %}
+$ npm install -g phpunit-testrunner
+{% endhighlight %}
+</p>
+
+<h2>Usage</h2>
+<ul>
+    <li>Firstly,  you'll need to create a config file. The config file should have an object with the following parameters:
+        <ul>
+            <li><code>rootPath</code> [string]</li>
+            <li><code>fileOrDirectoriesToWatch</code> [array] of directories/files </li>
+            <li><code>commandArguments</code> [array] of phpunit command line arguments</li><br />
+        </ul>
+        For example,
+        {% highlight json %}
+        {
+            "rootPath": ".",
+            "fileOrDirectoriesToWatch": [
+                "src/Acme"
+            ],
+            "commandArguments": [
+                "-c",
+                "app/phpunit.xml",
+                "--testsuite",
+                "TestSuite"
+            ]
+        }
+        {% endhighlight %}
+    </li>
+    <li>Execute the testrunner {% highlight bash %}$ phpunit-testrunner -c path/to/configuration/file.js{% endhighlight %}</li>
+</ul>
+
+<p>If you have any issues using the testrunner please report an issue on the <a href="https://github.com/uehondor/phpunit-testrunner/issues" title="issues">Github Issues Page</a></p>
